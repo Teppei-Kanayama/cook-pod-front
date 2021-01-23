@@ -2,6 +2,7 @@ import React from 'react';
 import './App.css';
 import NewDish from './pages/NewDish';
 import Dishes from './pages/Dishes'
+import Record from './pages/Record'
 
 import {
   BrowserRouter as Router,
@@ -22,12 +23,18 @@ export default function App() {
             <li>
               <Link to="/new_dish">新しい料理の登録</Link>
             </li>
+            <li>
+              <Link to="/record">食べた料理の記録</Link>
+            </li>
           </ul>
         </nav>
 
         <Switch>
           <Route path="/new_dish">
             <NewDish />
+          </Route>
+          <Route path="/record">
+            <Record />
           </Route>
           <Route path="/">
             <Dishes />
