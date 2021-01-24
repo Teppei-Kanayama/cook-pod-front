@@ -1,6 +1,16 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 
+function Dish(props) {
+
+  return (
+      <div>
+        <p>{ props.name }</p>
+        <p>{ props.url }</p>
+      </div>
+  );
+}
+
 function Dishes() {
   const apiUrl = 'http://localhost:3000/dishes';
   const [dishes, setDishes] = useState(null);
@@ -22,10 +32,10 @@ function Dishes() {
           dishes && dishes.map(
             (dish, index) => {
               return(
-                  <div>
-                    <p>{ dish.name }</p>
-                    <p>{ dish.url }</p>
-                  </div>
+                <Dish
+                  name={ dish.name }
+                  url={ dish.url }
+                  />
               )
             }
           )
