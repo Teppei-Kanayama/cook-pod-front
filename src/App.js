@@ -2,6 +2,7 @@ import React from 'react';
 import './App.css';
 import NewDish from './pages/NewDish';
 import Dishes from './pages/Dishes'
+import Dish from './pages/Dish'
 import Record from './pages/Record'
 
 import {
@@ -30,6 +31,9 @@ export default function App() {
         </nav>
 
         <Switch>
+          <Route path={"/dish/:dishId"}>
+            <Dish />
+          </Route>
           <Route path="/new_dish">
             <NewDish />
           </Route>
