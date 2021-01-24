@@ -3,10 +3,17 @@ import axios from 'axios';
 
 function Dish(props) {
 
+  const onClick = () => {
+    console.log(props.dishId);
+  }
+
   return (
       <div>
-        <p>{ props.name }</p>
-        <p>{ props.url }</p>
+        <button className="square" onClick={ onClick }>
+          <p>{ props.name }</p>
+          <p>{ props.url }</p>
+          <p>{ props.memo }</p>
+        </button>
       </div>
   );
 }
@@ -33,8 +40,10 @@ function Dishes() {
             (dish, index) => {
               return(
                 <Dish
+                  dishId={ dish.id }
                   name={ dish.name }
                   url={ dish.url }
+                  memo={ dish.memo }
                   />
               )
             }
