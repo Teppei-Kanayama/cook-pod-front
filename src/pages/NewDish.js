@@ -28,14 +28,14 @@ function SubmitForm(props) {
 
   // TODO: URLやメモも送信する
   return (
-    <form onSubmit={(event) => { handleSubmit( () => {props.onSubmit(event, craeteDish)} ) } }>
-      <label>
-        料理名:
-        <input type="text" value={props.value} onChange={props.handleChange} />
-      </label>
-      <input type="submit" value="送信" />
+    <form onSubmit={(event) => {handleSubmit( () => {props.onSubmit(event, craeteDish)})}}>
+    <label>
+    料理名:
+    <input type="text" value={props.value} onChange={props.handleChange} />
+    </label>
+    <input type="submit" value="送信" />
     </form>
-  );
+    );
 }
 
 class NewDish extends React.Component {
