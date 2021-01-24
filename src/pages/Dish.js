@@ -1,11 +1,6 @@
 import React from 'react';
-import {
-  useParams
-} from "react-router-dom";
 
 function Dish(props) {
-  // let { dishId } = useParams();
-
   const handleClick = () => {
    props.toggle();
   };
