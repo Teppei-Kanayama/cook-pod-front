@@ -1,12 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
 
 function Dishes() {
   const apiUrl = 'http://localhost:3000/dishes';
+  const [dishes, setDishes] = useState(null);
 
   const fetchData = async() => {
     const response = await axios.get(apiUrl)
-    console.log(response);
+    setDishes(response.data)
   }
 
   return (
@@ -15,6 +16,22 @@ function Dishes() {
       <button onClick={fetchData}>
           表示
       </button>
+
+      <div>
+        {
+          dishes && dishes.map(
+            (dish, index) => {
+              return(
+                  <div>
+                    <p>{ dish.name }</p>
+                    <p>{ dish.url }</p>
+                  </div>
+              )
+            }
+          )
+        }
+      </div>
+
     </div>
   );
 }
