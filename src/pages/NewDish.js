@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import { useHistory } from "react-router-dom";
 
 class NewDish extends React.Component {
   constructor(props) {
@@ -20,33 +21,50 @@ class NewDish extends React.Component {
   }
 
   render() {
-    const craeteDish = async (dishName) => {
-      try {
-        const result = await axios.post(
-          'http://localhost:3000/dishes',
-          {
-            name: dishName,
-            url: 'http://example.com/test',
-            memo: '特になし'
-          }
-        );
-        console.log(result);
-      } catch (error) {
-        console.log('error :/');
-      }
-    };
-
     // TODO: URLやメモも送信する
     return (
-      <form onSubmit={(event) => {this.handleSubmit(event, craeteDish)}}>
-        <label>
-          料理名:
-          <input type="text" value={this.state.value} onChange={this.handleChange} />
-        </label>
-        <input type="submit" value="送信" />
-      </form>
+      <SubmitButton
+        onSubmit={ this.handleSubmit }
+        handleChange = {this.handleChange}
+        value = {this.value}
+      />
     );
   }
+}
+
+function SubmitButton(props) {
+  let history = useHistory();
+
+  function handleSubmit(f) {
+    f();
+    history.push("/record");
+  }
+
+  const craeteDish = async (dishName) => {
+    try {
+      const result = await axios.post(
+        'http://localhost:3000/dishes',
+        {
+          name: dishName,
+          url: 'http://example.com/test',
+          memo: '特になし'
+        }
+      );
+      console.log(result);
+    } catch (error) {
+      console.log('error :/');
+    }
+  };
+
+  return (
+    <form onSubmit={(event) => { handleSubmit( () => {props.onSubmit(event, craeteDish)} ) } }>
+      <label>
+        料理名:
+        <input type="text" value={props.value} onChange={props.handleChange} />
+      </label>
+      <input type="submit" value="送信" />
+    </form>
+  );
 }
 
 export default NewDish;
