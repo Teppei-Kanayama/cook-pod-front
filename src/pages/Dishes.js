@@ -1,34 +1,14 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import Dish from './Dish'
 import './Dishes.css';
 
-class PopUp extends React.Component {
-  handleClick = () => {
-   this.props.toggle();
-  };
-render() {
-  return (
-   <div className="modal">
-     <div className="modal_content">
-     <span className="close" onClick={this.handleClick}>&times;    </span>
-     <p>I'm A Pop Up!!!</p>
-    </div>
-   </div>
-  );
- }
-}
-
-function Dish(props) {
+function DishFrame(props) {
   const [seen, setSeen] = useState(false);
 
   const togglePop = () => {
-    console.log('clicked');
     setSeen(!seen);
   };
-
-  // const onClick = () => {
-  //   console.log(props.dishId);
-  // }
 
   return (
       <div>
@@ -39,7 +19,7 @@ function Dish(props) {
             <p>{ props.memo }</p>
           </button>
         </div>
-        {seen ? <PopUp toggle={ togglePop } /> : null}
+        {seen ? <Dish toggle={ togglePop } dishId={ props.dishId } /> : null}
       </div>
   );
 }
@@ -65,7 +45,7 @@ function Dishes() {
           dishes && dishes.map(
             (dish, index) => {
               return(
-                <Dish
+                <DishFrame
                   dishId={ dish.id }
                   name={ dish.name }
                   url={ dish.url }
