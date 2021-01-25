@@ -15,11 +15,14 @@ function DishFrame(props) {
         <div>
           <button className="square" onClick={ togglePop }>
             <p>{ props.name }</p>
-            <p>{ props.url }</p>
-            <p>{ props.memo }</p>
           </button>
         </div>
-        {seen ? <Dish toggle={ togglePop } dishId={ props.dishId } /> : null}
+        {seen ? <Dish
+                  toggle={ togglePop }
+                  dishId={ props.dishId }
+                  name={ props.name }
+                  url={ props.url }
+                  memo={ props.memo } /> : null}
       </div>
   );
 }
