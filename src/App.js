@@ -24,9 +24,6 @@ export default function App() {
             <li>
               <Link to="/new_dish">新しい料理の登録</Link>
             </li>
-            <li>
-              <Link to="/record">食べた料理の記録</Link>
-            </li>
           </ul>
         </nav>
 
