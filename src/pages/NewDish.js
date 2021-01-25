@@ -27,6 +27,7 @@ function SubmitForm(props) {
   };
 
   // TODO: URLやメモも送信する
+  // TODO: リファクタ
   return (
     <form onSubmit={(event) => {handleSubmit( () => {props.onSubmit(event, craeteDish)})}}>
     <label>
