@@ -26,13 +26,16 @@ class EditDishForm extends React.Component {
       });
   }
 
+  // TODO: 編集できない
   render() {
     return (
-      <div>
+      <form>
         <h2>料理の編集</h2>
-        <p> { this.state.dishId } </p>
-        <p> { this.state.name } </p>
-      </div>
+        <p>料理名 <input type="text" value={ this.state.name }/></p>
+        <p>URL <input type="text" value={ this.state.url }/></p>
+        <p>メモ <input type="text" value={ this.state.memo }/></p>
+        <input type="submit" value="送信" />
+      </form>
     )
   }
 }
