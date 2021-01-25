@@ -64,7 +64,7 @@ function Dishes() {
 
 function orderDish(dishes, order) {
   let arr
-  if (order == "desc") {
+  if (order === "desc") {
     arr = dishes
   } else {
     arr = dishes.slice(0).reverse()
