@@ -3,7 +3,7 @@ import {
   useParams
 } from "react-router-dom";
 
-class EditDish extends React.Component {
+class EditDishForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -15,8 +15,7 @@ class EditDish extends React.Component {
   }
 
   componentDidMount() {
-    const dishId = 4
-    const apiUrl = 'http://localhost:3000/dishes/' + dishId;
+    const apiUrl = 'http://localhost:3000/dishes/' + this.props.dishId;
     fetch(apiUrl)
       .then((response) => response.json())
       .then((data) => {
@@ -28,12 +27,6 @@ class EditDish extends React.Component {
   }
 
   render() {
-    // const fetchData = async() => {
-    //   const response = await axios.get(apiUrl);
-    //   setDish(Object.values(response.data));
-    // }
-    // console.log(typeof this.state.dish);
-
     return (
       <div>
         <h2>料理の編集</h2>
@@ -42,6 +35,16 @@ class EditDish extends React.Component {
       </div>
     )
   }
+}
+
+function EditDish() {
+  let { dishId } = useParams();
+  return (
+    <EditDishForm
+      dishId={ dishId }
+    />
+  );
+
 }
 
 export default EditDish;
