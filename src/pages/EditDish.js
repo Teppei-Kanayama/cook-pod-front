@@ -8,26 +8,26 @@ import {
 function FormSubmission(props) {
   let history = useHistory();
 
+  const editDish = async (dishId, name, url, memo) => {
+    try {
+      const result = await axios.put(
+        'http://localhost:3000/dishes/' + dishId,
+        {
+          name: name,
+          url: url,
+          memo: memo
+        }
+      );
+      console.log(result);
+    } catch (error) {
+      console.log('Error!');
+    }
+  };
+
   function handleSubmit(event) {
-    // ここで関数定義をするのは一般的なのか？
-    const editDish = async (dishId, name, url, memo) => {
-      try {
-        const result = await axios.put(
-          'http://localhost:3000/dishes/' + dishId,
-          {
-            name: name,
-            url: url,
-            memo: memo
-          }
-        );
-        console.log(result);
-      } catch (error) {
-        console.log('何かがおかしい');
-      }
-    };
     editDish(props.dishId, props.formNameValue, props.formUrlValue, props.formMemoValue);
-    event.preventDefault();
-    history.push("/");
+    event.preventDefault();  // これは何？
+    history.push("/");  // 料理詳細ページを作ったら、そこに飛ぶように変更する
   }
 
   return (
@@ -52,7 +52,6 @@ class EditDishForm extends React.Component {
     this.handleNameChange = this.handleNameChange.bind(this);
     this.handleUrlChange = this.handleUrlChange.bind(this);
     this.handleMemoChange = this.handleMemoChange.bind(this);
-    // this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   componentDidMount() {
@@ -78,27 +77,6 @@ class EditDishForm extends React.Component {
   handleMemoChange(event) {
     this.setState({formMemoValue: event.target.value});
   }
-
-  // handleSubmit(event) {
-  //   // ここで関数定義をするのは一般的なのか？
-  //   const editDish = async (name, url, memo) => {
-  //     try {
-  //       const result = await axios.put(
-  //         'http://localhost:3000/dishes/' + this.props.dishId,
-  //         {
-  //           name: name,
-  //           url: url,
-  //           memo: memo
-  //         }
-  //       );
-  //       console.log(result);
-  //     } catch (error) {
-  //       console.log('何かがおかしい');
-  //     }
-  //   };
-  //   editDish(this.state.formNameValue, this.state.formUrlValue, this.state.formMemoValue);
-  //   event.preventDefault();
-  // }
 
   render() {
     return (
