@@ -30,15 +30,26 @@ function DishFrame(props) {
 function Dishes() {
   const apiUrl = 'http://localhost:3000/dishes';
   const [dishes, setDishes] = useState(null);
+  const [order, setOrder] = useState("desc");
 
   const fetchData = async() => {
     const response = await axios.get(apiUrl)
     setDishes(response.data)
   }
 
+  const setOrderOnChange = (event) => {
+    setOrder(event.target.value);
+  }
+
   return (
     <div>
       <h2>料理の一覧</h2>
+
+      <div onChange={ setOrderOnChange }>
+        <input type="radio" value="desc" name="order" /> 新しい順
+        <input type="radio" value="asc" name="order" /> 古い順
+      </div>
+
       <button onClick={fetchData}>
           表示
       </button>
