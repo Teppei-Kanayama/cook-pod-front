@@ -11,7 +11,14 @@ class EditDishForm extends React.Component {
       name: null,
       url: null,
       memo: null,
+      formNameValue: '',
+      formUrlValue: '',
+      formMemoValue: '',
     };
+    this.handleNameChange = this.handleNameChange.bind(this);
+    this.handleUrlChange = this.handleUrlChange.bind(this);
+    this.handleMemoChange = this.handleMemoChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   componentDidMount() {
@@ -23,19 +30,40 @@ class EditDishForm extends React.Component {
         this.setState({name: data.name});
         this.setState({url: data.url});
         this.setState({memo: data.memo});
+        this.setState({formNameValue: data.name});
+        this.setState({formUrlValue: data.url});
+        this.setState({formMemoValue: data.memo});
       });
   }
 
-  // TODO: 編集できない
+  handleNameChange(event) {
+    this.setState({formNameValue: event.target.value});
+  }
+
+  handleUrlChange(event) {
+    this.setState({formUrlValue: event.target.value});
+  }
+
+  handleMemoChange(event) {
+    this.setState({formMemoValue: event.target.value});
+  }
+
+  handleSubmit(event) {
+    console.log('A name was submitted: ' + this.state.formMemoValue);
+    event.preventDefault();
+  }
+
   render() {
     return (
-      <form>
+      <div>
         <h2>料理の編集</h2>
-        <p>料理名 <input type="text" value={ this.state.name }/></p>
-        <p>URL <input type="text" value={ this.state.url }/></p>
-        <p>メモ <input type="text" value={ this.state.memo }/></p>
-        <input type="submit" value="送信" />
-      </form>
+        <form onSubmit={ this.handleSubmit }>
+          <p>料理名 <input type="text" value={ this.state.formNameValue } onChange={ this.handleChange }/></p>
+          <p>URL <input type="text" value={ this.state.formUrlValue } onChange={ this.handleUrlChange }/></p>
+          <p>メモ <input type="text" value={ this.state.formMemoValue } onChange={ this.handleMemoChange }/></p>
+          <input type="submit" placeholder="送信" />
+        </form>
+      </div>
     )
   }
 }
