@@ -1,4 +1,7 @@
 import React from 'react';
+import {
+  Link,
+} from "react-router-dom";
 
 function DishPop(props) {
   const handleClick = () => {
@@ -15,6 +18,9 @@ function DishPop(props) {
       <li> URL: { props.url } </li>
       <li> メモ: { props.memo } </li>
       </ul>
+      <p>
+        <Link to={"/dish/" + props.dishId  + "/edit"} >編集する</Link>
+      </p>
     </div>
    </div>
   );

@@ -46,7 +46,7 @@ function Dishes() {
       <h2>料理の一覧</h2>
 
       <div onChange={ setOrderOnChange }>
-        <input type="radio" value="desc" name="order" /> 新しい順
+        <input type="radio" value="desc" name="order" checked /> 新しい順
         <input type="radio" value="asc" name="order" /> 古い順
       </div>
 
