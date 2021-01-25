@@ -12,6 +12,7 @@ class EditDishForm extends React.Component {
       formUrlValue: '',
       formMemoValue: '',
     };
+    // これらは何？
     this.handleNameChange = this.handleNameChange.bind(this);
     this.handleUrlChange = this.handleUrlChange.bind(this);
     this.handleMemoChange = this.handleMemoChange.bind(this);
@@ -62,6 +63,10 @@ class EditDishForm extends React.Component {
     event.preventDefault();
   }
 
+  handleSubmitButton(evnet) {
+    console.log('pushed!')
+  }
+
   render() {
     return (
       <div>
@@ -70,7 +75,7 @@ class EditDishForm extends React.Component {
           <p>料理名 <input type="text" value={ this.state.formNameValue } onChange={ this.handleNameChange }/></p>
           <p>URL <input type="text" value={ this.state.formUrlValue } onChange={ this.handleUrlChange }/></p>
           <p>メモ <input type="text" value={ this.state.formMemoValue } onChange={ this.handleMemoChange }/></p>
-          <input type="submit" value="送信" />
+          <input type="submit" value="送信" onClick={ this.handleSubmitButton }/>
         </form>
       </div>
     )
