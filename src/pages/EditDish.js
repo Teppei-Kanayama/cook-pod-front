@@ -1,5 +1,4 @@
 import React from 'react';
-import axios from 'axios';
 import {
   useParams
 } from "react-router-dom";
@@ -8,7 +7,10 @@ class EditDish extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      dish: null,
+      dishId: null,
+      name: null,
+      url: null,
+      memo: null,
     };
   }
 
@@ -17,7 +19,12 @@ class EditDish extends React.Component {
     const apiUrl = 'http://localhost:3000/dishes/' + dishId;
     fetch(apiUrl)
       .then((response) => response.json())
-      .then((data) => this.setState({dish: Object.values(data)}));
+      .then((data) => {
+        this.setState({dishId: data.id});
+        this.setState({name: data.name});
+        this.setState({url: data.url});
+        this.setState({memo: data.memo});
+      });
   }
 
   render() {
@@ -25,11 +32,13 @@ class EditDish extends React.Component {
     //   const response = await axios.get(apiUrl);
     //   setDish(Object.values(response.data));
     // }
+    // console.log(typeof this.state.dish);
 
     return (
       <div>
         <h2>料理の編集</h2>
-        <p> { this.state.dish } </p>
+        <p> { this.state.dishId } </p>
+        <p> { this.state.name } </p>
       </div>
     )
   }
