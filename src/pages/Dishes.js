@@ -55,24 +55,33 @@ function Dishes() {
       </button>
 
       <div>
-        {
-          dishes && dishes.map(
-            (dish, index) => {
-              return(
-                <DishFrame
-                  dishId={ dish.id }
-                  name={ dish.name }
-                  url={ dish.url }
-                  memo={ dish.memo }
-                  />
-              )
-            }
-          )
-        }
+        {  dishes && orderDish(dishes, order)  }
       </div>
 
     </div>
   );
+}
+
+function orderDish(dishes, order) {
+  let arr
+  if (order == "desc") {
+    arr = dishes
+  } else {
+    arr = dishes.slice(0).reverse()
+  }
+  const orderedDishes = arr.map(
+    (dish, index) => {
+      return(
+        <DishFrame
+          dishId={ dish.id }
+          name={ dish.name }
+          url={ dish.url }
+          memo={ dish.memo }
+          />
+      )
+    }
+  );
+  return orderedDishes;
 }
 
 export default Dishes;
