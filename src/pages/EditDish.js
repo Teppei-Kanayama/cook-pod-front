@@ -1,4 +1,5 @@
 import React from 'react';
+import axios from 'axios';
 import {
   useParams
 } from "react-router-dom";
@@ -7,10 +8,6 @@ class EditDishForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      dishId: null,
-      name: null,
-      url: null,
-      memo: null,
       formNameValue: '',
       formUrlValue: '',
       formMemoValue: '',
@@ -26,10 +23,6 @@ class EditDishForm extends React.Component {
     fetch(apiUrl)
       .then((response) => response.json())
       .then((data) => {
-        this.setState({dishId: data.id});
-        this.setState({name: data.name});
-        this.setState({url: data.url});
-        this.setState({memo: data.memo});
         this.setState({formNameValue: data.name});
         this.setState({formUrlValue: data.url});
         this.setState({formMemoValue: data.memo});
@@ -49,7 +42,23 @@ class EditDishForm extends React.Component {
   }
 
   handleSubmit(event) {
-    console.log('A name was submitted: ' + this.state.formMemoValue);
+    // ここで関数定義をするのは一般的なのか？
+    const editDish = async (name, url, memo) => {
+      try {
+        const result = await axios.put(
+          'http://localhost:3000/dishes/' + this.props.dishId,
+          {
+            name: name,
+            url: url,
+            memo: memo
+          }
+        );
+        console.log(result);
+      } catch (error) {
+        console.log('何かがおかしい');
+      }
+    };
+    editDish(this.state.formNameValue, this.state.formUrlValue, this.state.formMemoValue);
     event.preventDefault();
   }
 
@@ -58,10 +67,10 @@ class EditDishForm extends React.Component {
       <div>
         <h2>料理の編集</h2>
         <form onSubmit={ this.handleSubmit }>
-          <p>料理名 <input type="text" value={ this.state.formNameValue } onChange={ this.handleChange }/></p>
+          <p>料理名 <input type="text" value={ this.state.formNameValue } onChange={ this.handleNameChange }/></p>
           <p>URL <input type="text" value={ this.state.formUrlValue } onChange={ this.handleUrlChange }/></p>
           <p>メモ <input type="text" value={ this.state.formMemoValue } onChange={ this.handleMemoChange }/></p>
-          <input type="submit" placeholder="送信" />
+          <input type="submit" value="送信" />
         </form>
       </div>
     )
