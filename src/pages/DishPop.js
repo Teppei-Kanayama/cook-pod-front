@@ -1,6 +1,6 @@
 import React from 'react';
 
-function Dish(props) {
+function DishPop(props) {
   const handleClick = () => {
    props.toggle();
   };
@@ -20,4 +20,4 @@ function Dish(props) {
   );
 }
 
-export default Dish;
+export default DishPop;

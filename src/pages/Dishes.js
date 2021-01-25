@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import Dish from './Dish'
+import DishPop from './DishPop'
 import './Dishes.css';
 
 function DishFrame(props) {
@@ -17,7 +17,7 @@ function DishFrame(props) {
             <p>{ props.name }</p>
           </button>
         </div>
-        {seen ? <Dish
+        {seen ? <DishPop
                   toggle={ togglePop }
                   dishId={ props.dishId }
                   name={ props.name }
