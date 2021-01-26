@@ -1,11 +1,11 @@
 FROM node:15.5.1-alpine3.10
-WORKDIR /react-tutorial
+WORKDIR /cook-pod-front
 
-COPY package.json /react-tutorial/package.json
-COPY package-lock.json /react-tutorial/package-lock.json
+COPY package.json /cook-pod-front/package.json
+COPY package-lock.json /cook-pod-front/package-lock.json
 RUN npm install
 
-COPY . /react-tutorial
+COPY . /cook-pod-front
 
 CMD npm run dev
 

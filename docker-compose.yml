@@ -5,8 +5,8 @@ services:
       context: .
       dockerfile: Dockerfile
     volumes:
-     - ./:/react-tutorial
-     - /react-tutorial/node_modules
+     - ./:/cook-pod-front
+     - /cook-pod-front/node_modules
     command: sh -c "npm start"
     ports:
      - "3000:3000"
