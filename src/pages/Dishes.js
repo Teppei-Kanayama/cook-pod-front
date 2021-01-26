@@ -28,7 +28,7 @@ function DishFrame(props) {
 }
 
 function Dishes() {
-  const apiUrl = 'http://localhost:3000/dishes';
+  const apiUrl = 'http://localhost:3001/dishes';
   const [dishes, setDishes] = useState(null);
   const [order, setOrder] = useState("desc");
   const [display, setDisplay] = useState(false)

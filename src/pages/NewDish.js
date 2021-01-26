@@ -8,7 +8,7 @@ function NewDishForm(props) {
   const newDish = async (name, url, memo) => {
     try {
       const result = await axios.post(
-        'http://localhost:3000/dishes',
+        'http://localhost:3001/dishes',
         {
           name: name,
           url: url,

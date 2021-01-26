@@ -11,7 +11,7 @@ function FormSubmission(props) {
   const editDish = async (dishId, name, url, memo) => {
     try {
       const result = await axios.put(
-        'http://localhost:3000/dishes/' + dishId,
+        'http://localhost:3001/dishes/' + dishId,
         {
           name: name,
           url: url,
@@ -55,7 +55,7 @@ class EditDishForm extends React.Component {
   }
 
   componentDidMount() {
-    const apiUrl = 'http://localhost:3000/dishes/' + this.props.dishId;
+    const apiUrl = 'http://localhost:3001/dishes/' + this.props.dishId;
     fetch(apiUrl)
       .then((response) => response.json())
       .then((data) => {
