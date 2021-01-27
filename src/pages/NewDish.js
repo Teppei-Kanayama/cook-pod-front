@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import { useHistory } from "react-router-dom";
+import { baseUrl } from '../Settings'
 
 function NewDishForm(props) {
   let history = useHistory();
@@ -8,7 +9,7 @@ function NewDishForm(props) {
   const newDish = async (name, url, memo) => {
     try {
       const result = await axios.post(
-        'http://localhost:3001/dishes',
+        baseUrl + '/dishes',
         {
           name: name,
           url: url,

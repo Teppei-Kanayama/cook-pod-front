@@ -4,6 +4,7 @@ import {
   useParams,
   useHistory
 } from "react-router-dom";
+import { baseUrl } from '../Settings'
 
 function FormSubmission(props) {
   let history = useHistory();
@@ -11,7 +12,7 @@ function FormSubmission(props) {
   const editDish = async (dishId, name, url, memo) => {
     try {
       const result = await axios.put(
-        'http://localhost:3001/dishes/' + dishId,
+        baseUrl + '/dishes/' + dishId,
         {
           name: name,
           url: url,
@@ -55,7 +56,7 @@ class EditDishForm extends React.Component {
   }
 
   componentDidMount() {
-    const apiUrl = 'http://localhost:3001/dishes/' + this.props.dishId;
+    const apiUrl = baseUrl + '/dishes/' + this.props.dishId;
     fetch(apiUrl)
       .then((response) => response.json())
       .then((data) => {

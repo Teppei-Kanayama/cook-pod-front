@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import DishPop from './DishPop'
 import './Dishes.css';
+import { baseUrl } from '../Settings'
 
 function DishFrame(props) {
   const [seen, setSeen] = useState(false);
@@ -28,7 +29,7 @@ function DishFrame(props) {
 }
 
 function Dishes() {
-  const apiUrl = 'http://localhost:3001/dishes';
+  const apiUrl = baseUrl + '/dishes';
   const [dishes, setDishes] = useState(null);
   const [order, setOrder] = useState("desc");
   const [display, setDisplay] = useState(false)
