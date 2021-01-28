@@ -2,6 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import { useHistory } from "react-router-dom";
 import { baseUrl } from '../Settings'
+import './Dishes.css';
 
 function NewDishForm(props) {
   let history = useHistory();
@@ -33,7 +34,7 @@ function NewDishForm(props) {
       <p>料理名 <input type="text" value={ props.formNameValue } onChange={ props.handleNameChange }/></p>
       <p>URL <input type="text" value={ props.formUrlValue } onChange={ props.handleUrlChange }/></p>
       <p>メモ <input type="text" value={ props.formMemoValue } onChange={ props.handleMemoChange }/></p>
-      <input type="submit" value="送信" />
+      <input class="btn" type="submit" value="送信" />
     </form>
   );
 }
