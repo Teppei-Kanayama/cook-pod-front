@@ -50,8 +50,17 @@ function Dishes() {
       <h2>料理の一覧</h2>
 
       <div onChange={ setOrderOnChange }>
-        <input type="radio" value="desc" name="order" defaultChecked /> 新しい順
-        <input type="radio" value="asc" name="order" /> 古い順
+        <label class="ECM_RadioInput">
+          <input class="ECM_RadioInput-Input" type="radio" name="order" value="desc" />
+            <span class="ECM_RadioInput-DummyInput"></span>
+            <span class="ECM_RadioInput-LabelText">新しい順</span>
+        </label>
+
+        <label class="ECM_RadioInput">
+          <input class="ECM_RadioInput-Input" type="radio" name="order" value="asc" />
+            <span class="ECM_RadioInput-DummyInput"></span>
+            <span class="ECM_RadioInput-LabelText">古い順</span>
+        </label>
       </div>
 
       <button class="btn" onClick={fetchData}>
