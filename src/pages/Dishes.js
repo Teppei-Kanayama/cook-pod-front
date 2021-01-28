@@ -54,7 +54,7 @@ function Dishes() {
         <input type="radio" value="asc" name="order" /> 古い順
       </div>
 
-      <button onClick={fetchData}>
+      <button class="btn" onClick={fetchData}>
           表示
       </button>
 
