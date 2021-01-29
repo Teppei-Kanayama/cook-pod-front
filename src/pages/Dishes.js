@@ -18,10 +18,9 @@ function DishFrame(props) {
   return (
       <div>
         <Card style={{ width: '18rem' }}>
-          <Card.Img variant="top" src={ otachi } />
+          <Card.Img variant="top" src={ otachi } onClick={ toggleModal } />
           <Card.Body>
-            <Card.Title>{ props.name }</Card.Title>
-            <Button variant="primary" onClick={ toggleModal }>詳細</Button>
+            <Card.Title onClick={ toggleModal }>{ props.name }</Card.Title>
           </Card.Body>
         </Card>
 
