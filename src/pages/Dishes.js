@@ -8,7 +8,7 @@ import ButtonGroup from 'react-bootstrap/ButtonGroup'
 import Card from 'react-bootstrap/Card'
 import otachi from '../otachi.png'
 
-function DishFrame(props) {
+function DishCard(props) {
   const [seen, setSeen] = useState(false);
 
   const toggleModal = () => {
@@ -100,12 +100,12 @@ function orderDish(dishes, order) {
   const orderedDishes = arr.map(
     (dish, index) => {
       return(
-        <DishFrame
-          dishId={ dish.id }
-          name={ dish.name }
-          url={ dish.url }
-          memo={ dish.memo }
-          />
+      <DishCard
+        dishId={ dish.id }
+        name={ dish.name }
+        url={ dish.url }
+        memo={ dish.memo }
+        />
       )
     }
   );
