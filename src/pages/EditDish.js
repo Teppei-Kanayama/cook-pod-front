@@ -5,6 +5,8 @@ import {
   useHistory
 } from "react-router-dom";
 import { baseUrl } from '../Settings'
+import Form from 'react-bootstrap/Form'
+import Button from 'react-bootstrap/Button';
 
 function FormSubmission(props) {
   let history = useHistory();
@@ -32,12 +34,23 @@ function FormSubmission(props) {
   }
 
   return (
-    <form onSubmit={ handleSubmit }>
-      <p>料理名 <input type="text" value={ props.formNameValue } onChange={ props.handleNameChange }/></p>
-      <p>URL <input type="text" value={ props.formUrlValue } onChange={ props.handleUrlChange }/></p>
-      <p>メモ <input type="text" value={ props.formMemoValue } onChange={ props.handleMemoChange }/></p>
-      <input type="submit" value="送信" />
-    </form>
+    <Form onSubmit={ handleSubmit }>
+      <Form.Group>
+        <Form.Label>料理名</Form.Label>
+        <Form.Control type="text" value={ props.formNameValue } onChange={ props.handleNameChange } />
+      </Form.Group>
+      <Form.Group>
+        <Form.Label>URL</Form.Label>
+        <Form.Control type="text" value={ props.formUrlValue } onChange={ props.handleUrlChange } />
+      </Form.Group>
+      <Form.Group>
+        <Form.Label>メモ</Form.Label>
+        <Form.Control type="text" value={ props.formMemoValue } onChange={ props.handleMemoChange } />
+      </Form.Group>
+      <Button variant="primary" type="submit">
+        送信
+      </Button>
+    </Form>
   );
 }
 
