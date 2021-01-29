@@ -3,6 +3,8 @@ import axios from 'axios';
 import { useHistory } from "react-router-dom";
 import { baseUrl } from '../Settings'
 import './Dishes.css';
+import Form from 'react-bootstrap/Form'
+import Button from 'react-bootstrap/Button';
 
 function NewDishForm(props) {
   let history = useHistory();
@@ -30,12 +32,23 @@ function NewDishForm(props) {
   }
 
   return (
-    <form onSubmit={ handleSubmit }>
-      <p>料理名 <input type="text" value={ props.formNameValue } onChange={ props.handleNameChange }/></p>
-      <p>URL <input type="text" value={ props.formUrlValue } onChange={ props.handleUrlChange }/></p>
-      <p>メモ <input type="text" value={ props.formMemoValue } onChange={ props.handleMemoChange }/></p>
-      <input class="btn" type="submit" value="送信" />
-    </form>
+    <Form onSubmit={ handleSubmit }>
+      <Form.Group>
+        <Form.Label>料理名</Form.Label>
+        <Form.Control type="text" placeholder="アボカドカルボナーラ" value={ props.formNameValue } onChange={ props.handleNameChange } />
+      </Form.Group>
+      <Form.Group>
+        <Form.Label>URL</Form.Label>
+        <Form.Control type="text" placeholder="https://youtube.com/example" value={ props.formUrlValue } onChange={ props.handleUrlChange } />
+      </Form.Group>
+      <Form.Group>
+        <Form.Label>メモ</Form.Label>
+        <Form.Control type="text" placeholder="おいしい" value={ props.formMemoValue } onChange={ props.handleMemoChange } />
+      </Form.Group>
+      <Button variant="primary" type="submit">
+        送信
+      </Button>
+    </Form>
   );
 }
 

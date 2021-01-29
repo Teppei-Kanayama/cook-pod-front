@@ -1,5 +1,4 @@
 import React from 'react';
-import './App.css';
 import './pages/Dishes.css';
 import NewDish from './pages/NewDish';
 import Dishes from './pages/Dishes'
@@ -11,8 +10,7 @@ import Nav from 'react-bootstrap/Nav'
 import {
   BrowserRouter as Router,
   Switch,
-  Route,
-  Link
+  Route
 } from "react-router-dom";
 
 export default function App() {
