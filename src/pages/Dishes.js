@@ -3,6 +3,7 @@ import axios from 'axios';
 import DishPop from './DishPop'
 import './Dishes.css';
 import { baseUrl } from '../Settings'
+import Button from 'react-bootstrap/Button';
 
 function DishFrame(props) {
   const [seen, setSeen] = useState(false);
@@ -63,9 +64,9 @@ function Dishes() {
         </label>
       </div>
 
-      <button class="btn" onClick={fetchData}>
+      <Button variant="success" onClick={fetchData}>
           表示
-      </button>
+      </Button>
 
       <div>
         {  display && orderDish(dishes, order)  }

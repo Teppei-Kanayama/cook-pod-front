@@ -10,7 +10,7 @@
 }
 
 /* ボタン */
-.btn {
+/* .btn {
   dispay: inline-block;
   width: 236px;
   max-width: 100%;
@@ -31,7 +31,7 @@
   background-color: #fff;
   border-color: currentColor;
   color: #e25c00;
-}
+} */
 
 /* ラジオボタン */
 .ECM_RadioInput {
