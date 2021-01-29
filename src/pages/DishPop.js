@@ -1,7 +1,6 @@
 import React from 'react';
-import {
-  Link,
-} from "react-router-dom";
+import Modal from 'react-bootstrap/Modal'
+import Button from 'react-bootstrap/Button';
 
 function DishPop(props) {
   const handleClick = () => {
@@ -9,20 +8,22 @@ function DishPop(props) {
   };
 
   return (
-   <div className="modal">
-     <div className="modal_content">
-     <span className="close" onClick={handleClick}>&times;    </span>
-      <ul>
-      <li> Id: { props.dishId } </li>
-      <li> 料理名: { props.name } </li>
-      <li> URL: { props.url } </li>
-      <li> メモ: { props.memo } </li>
-      </ul>
-      <p>
-        <Link to={"/dish/" + props.dishId  + "/edit"} >編集する</Link>
-      </p>
-    </div>
-   </div>
+    <Modal.Dialog>
+    <Modal.Header>
+      <Modal.Title>{ props.name }</Modal.Title>
+    </Modal.Header>
+
+    <Modal.Body>
+      <p>Id: { props.dishId }</p>
+      <p>URL: { props.url }</p>
+      <p>メモ: { props.memo }</p>
+    </Modal.Body>
+
+    <Modal.Footer>
+      <Button variant="primary" href={"/dish/" + props.dishId  + "/edit"}>編集</Button>
+      <Button variant="primary" onClick={ handleClick }>閉じる</Button>
+    </Modal.Footer>
+  </Modal.Dialog>
   );
 }
 

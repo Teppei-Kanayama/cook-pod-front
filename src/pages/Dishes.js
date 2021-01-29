@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import DishPop from './DishPop'
-import './Dishes.css';
 import { baseUrl } from '../Settings'
 import Button from 'react-bootstrap/Button';
 import ToggleButton from 'react-bootstrap/ToggleButton'

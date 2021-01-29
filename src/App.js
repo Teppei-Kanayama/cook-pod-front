@@ -1,5 +1,4 @@
 import React from 'react';
-import './pages/Dishes.css';
 import NewDish from './pages/NewDish';
 import Dishes from './pages/Dishes'
 import EditDish from './pages/EditDish'

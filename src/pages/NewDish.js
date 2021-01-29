@@ -2,7 +2,6 @@ import React from 'react';
 import axios from 'axios';
 import { useHistory } from "react-router-dom";
 import { baseUrl } from '../Settings'
-import './Dishes.css';
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button';
 
