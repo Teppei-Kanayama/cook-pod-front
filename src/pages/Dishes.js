@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import DishPop from './DishPop'
+import DishModal from './DishModal'
 import { baseUrl } from '../Settings'
 import Button from 'react-bootstrap/Button';
 import ToggleButton from 'react-bootstrap/ToggleButton'
@@ -9,19 +9,19 @@ import ButtonGroup from 'react-bootstrap/ButtonGroup'
 function DishFrame(props) {
   const [seen, setSeen] = useState(false);
 
-  const togglePop = () => {
+  const toggleModal = () => {
     setSeen(!seen);
   };
 
   return (
       <div>
         <div>
-          <button className="square" onClick={ togglePop }>
+          <button className="square" onClick={ toggleModal }>
             <p>{ props.name }</p>
           </button>
         </div>
-        {seen ? <DishPop
-                  toggle={ togglePop }
+        {seen ? <DishModal
+                  toggle={ toggleModal }
                   dishId={ props.dishId }
                   name={ props.name }
                   url={ props.url }

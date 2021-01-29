@@ -2,7 +2,7 @@ import React from 'react';
 import Modal from 'react-bootstrap/Modal'
 import Button from 'react-bootstrap/Button';
 
-function DishPop(props) {
+function DishModal(props) {
   const handleClick = () => {
    props.toggle();
   };
@@ -27,4 +27,4 @@ function DishPop(props) {
   );
 }
 
-export default DishPop;
+export default DishModal;
