@@ -9,27 +9,24 @@ import Card from 'react-bootstrap/Card'
 import otachi from '../otachi.png'
 
 function DishCard(props) {
-  const [seen, setSeen] = useState(false);
-
-  const toggleModal = () => {
-    setSeen(!seen);
-  };
+  const [modalShow, setModalShow] = React.useState(false);
 
   return (
       <div>
         <Card style={{ width: '18rem' }}>
-          <Card.Img variant="top" src={ otachi } onClick={ toggleModal } />
+          <Card.Img variant="top" src={ otachi } onClick={ () => setModalShow(true) } />
           <Card.Body>
-            <Card.Title onClick={ toggleModal }>{ props.name }</Card.Title>
+            <Card.Title onClick={ () => setModalShow(true) }>{ props.name }</Card.Title>
           </Card.Body>
         </Card>
 
-        {seen ? <DishModal
-                  toggle={ toggleModal }
-                  dishId={ props.dishId }
-                  name={ props.name }
-                  url={ props.url }
-                  memo={ props.memo } /> : null}
+        <DishModal
+          show={ modalShow }
+          onHide={ () => setModalShow(false) }
+          dishId={ props.dishId }
+          name={ props.name }
+          url={ props.url }
+          memo={ props.memo } />
       </div>
   );
 }
