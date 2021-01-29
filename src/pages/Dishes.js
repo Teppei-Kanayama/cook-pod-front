@@ -4,6 +4,8 @@ import DishPop from './DishPop'
 import './Dishes.css';
 import { baseUrl } from '../Settings'
 import Button from 'react-bootstrap/Button';
+import ToggleButton from 'react-bootstrap/ToggleButton'
+import ButtonGroup from 'react-bootstrap/ButtonGroup'
 
 function DishFrame(props) {
   const [seen, setSeen] = useState(false);
@@ -46,23 +48,32 @@ function Dishes() {
     setDisplay(false);
   }
 
+  const radios = [
+    { name: '新しい順', value: 'desc' },
+    { name: '古い順', value: 'asc' },
+  ];
+
   return (
     <div>
       <h2>料理の一覧</h2>
 
-      <div onChange={ setOrderOnChange }>
-        <label class="ECM_RadioInput">
-          <input class="ECM_RadioInput-Input" type="radio" name="order" value="desc" />
-            <span class="ECM_RadioInput-DummyInput"></span>
-            <span class="ECM_RadioInput-LabelText">新しい順</span>
-        </label>
+      <ButtonGroup toggle>
+        {radios.map((radio, idx) => (
+          <ToggleButton
+            key={idx}
+            type="radio"
+            variant="light"
+            name="radio"
+            value={radio.value}
+            checked={order === radio.value}
+            onChange={ setOrderOnChange }
+          >
+            {radio.name}
+          </ToggleButton>
+        ))}
+      </ButtonGroup>
 
-        <label class="ECM_RadioInput">
-          <input class="ECM_RadioInput-Input" type="radio" name="order" value="asc" />
-            <span class="ECM_RadioInput-DummyInput"></span>
-            <span class="ECM_RadioInput-LabelText">古い順</span>
-        </label>
-      </div>
+      <br />
 
       <Button variant="success" onClick={fetchData}>
           表示
