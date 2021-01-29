@@ -5,6 +5,8 @@ import { baseUrl } from '../Settings'
 import Button from 'react-bootstrap/Button';
 import ToggleButton from 'react-bootstrap/ToggleButton'
 import ButtonGroup from 'react-bootstrap/ButtonGroup'
+import Card from 'react-bootstrap/Card'
+import otachi from '../otachi.png'
 
 function DishFrame(props) {
   const [seen, setSeen] = useState(false);
@@ -15,11 +17,14 @@ function DishFrame(props) {
 
   return (
       <div>
-        <div>
-          <button className="square" onClick={ toggleModal }>
-            <p>{ props.name }</p>
-          </button>
-        </div>
+        <Card style={{ width: '18rem' }}>
+          <Card.Img variant="top" src={ otachi } />
+          <Card.Body>
+            <Card.Title>{ props.name }</Card.Title>
+            <Button variant="primary" onClick={ toggleModal }>詳細</Button>
+          </Card.Body>
+        </Card>
+
         {seen ? <DishModal
                   toggle={ toggleModal }
                   dishId={ props.dishId }
