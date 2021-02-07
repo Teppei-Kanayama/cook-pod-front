@@ -10,20 +10,12 @@ function NewDishForm(props) {
 
   const newDish = async (name, url, memo) => {
     try {
-      const result = await axios(
+      const result = await axios.post(
+        baseUrl + '/dishes',
         {
-          url: '/dishes',
-          method: 'post',
-          data: {
-            name: name,
-            url: url,
-            memo: memo
-          },
-          proxy: {
-            protocol: 'http',
-            host: baseUrl,
-            port: 80
-          }
+         name: name,
+         url: url,
+         memo: memo
         }
       );
       console.log(result);

@@ -38,17 +38,7 @@ function Dishes() {
   const [display, setDisplay] = useState(false)
 
   const fetchData = async() => {
-    const response = await axios(
-      {
-        url: '/dishes',
-        method: 'get',
-        proxy: {
-          protocol: 'http',
-          host: baseUrl,
-          port: 80
-        }
-      }
-    );
+    const response = await axios.get(apiUrl);
     setDishes(response.data);
     setDisplay(true);
   }

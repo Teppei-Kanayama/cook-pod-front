@@ -3,6 +3,7 @@ import NewDish from './pages/NewDish';
 import Dishes from './pages/Dishes'
 import EditDish from './pages/EditDish'
 import Record from './pages/Record'
+import Example from './pages/Example'
 import Navbar from 'react-bootstrap/Navbar'
 import Nav from 'react-bootstrap/Nav'
 
@@ -36,6 +37,9 @@ export default function App() {
         </Route>
         <Route path="/record">
           <Record />
+        </Route>
+        <Route path="/example">
+          <Example />
         </Route>
         <Route path="/">
           <Dishes />
